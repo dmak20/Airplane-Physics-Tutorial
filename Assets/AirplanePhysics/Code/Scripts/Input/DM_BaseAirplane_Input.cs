@@ -17,6 +17,12 @@ namespace DM
 
         public int maxFlapIncrements = 2;
         protected int flaps = 1;
+
+        public float throttleSpeed = 0.1f;
+
+        private float stickyThrottle;
+        public float StickyThrottle { get { return stickyThrottle; } }
+
         #endregion
 
         #region Properties
@@ -49,6 +55,7 @@ namespace DM
             roll = Input.GetAxis("Horizontal");
             yaw = Input.GetAxis("Yaw");
             throttle = Input.GetAxis("Throttle");
+            StickyThrottleControl();
             
             brake = Input.GetKey(brakeKey) ? 1 : 0;
             
@@ -64,6 +71,11 @@ namespace DM
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
         }
 
+        void StickyThrottleControl()
+        {
+            stickyThrottle = stickyThrottle + (throttle * throttleSpeed * Time.deltaTime);
+            stickyThrottle = Mathf.Clamp01(stickyThrottle);
+        }
 
         #endregion
     }
