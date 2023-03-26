@@ -21,6 +21,7 @@ namespace DM
 
         [Header("Drag Properties")]
         public float dragFactor = 0.01f;
+        public float flapDragFactor = 0.005f;
 
         [Header("Control Properties")]
         public float pitchSpeed = 1000f;
@@ -105,7 +106,10 @@ namespace DM
         void CalculateDrag()
         {
             float speedDrag = forwardSpeed * dragFactor;
-            float finalDrag = startDrag + speedDrag;
+
+            float flapDrag = input.Flaps * flapDragFactor;
+
+            float finalDrag = startDrag + speedDrag + flapDrag;
 
             rb.drag = finalDrag;
             rb.angularDrag = startAngularDrag * forwardSpeed;

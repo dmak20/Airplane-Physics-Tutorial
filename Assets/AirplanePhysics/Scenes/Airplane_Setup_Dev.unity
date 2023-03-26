@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 549465969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalScale: {x: 1000, y: 1, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 405834162}
@@ -604,37 +604,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2041101268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2041101269}
-  m_Layer: 0
-  m_Name: New_Airplane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2041101269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041101268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.07963, y: 3.0213208, z: -0.6561505}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &9016024867965573807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -666,6 +635,18 @@ PrefabInstance:
       propertyPath: blurredPropMat
       value: 
       objectReference: {fileID: 2100000, guid: 2f9d0d217afef324f9cb0651dd3fa6d0, type: 2}
+    - target: {fileID: 425649108265535828, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: isSteering
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 425649108265535828, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: steerAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 425649108265535828, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: steerSmoothSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 531147566918910725, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: isBrakingWheel
       value: 1
@@ -736,19 +717,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: yawSpeed
-      value: 8000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: rollSpeed
-      value: 8000
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: dragFactor
+      value: 0.0004
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: pitchSpeed
-      value: 8000
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: rbLerpSpeed
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: maxLiftPower
-      value: 8000
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: flapDragFactor
+      value: 0.0002
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: liftCurve.m_Curve.Array.size
@@ -829,6 +822,10 @@ PrefabInstance:
     - target: {fileID: 7967077419686897775, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: maxForce
       value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437627006301181229, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: liftForce
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1646058834961026365, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}

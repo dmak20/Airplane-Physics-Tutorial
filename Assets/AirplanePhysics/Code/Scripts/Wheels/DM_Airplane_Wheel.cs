@@ -12,11 +12,15 @@ namespace DM
         public Transform wheelGO;
         public bool isBrakingWheel = false;
         public float brakePower = 5f;
-        
+        public bool isSteering = false;
+        public float steerAngle = 12;
+        public float steerSmoothSpeed = 2f;
+
         private WheelCollider WheelCol;
         private Vector3 worldPos;
         private Quaternion worldRot;
         private float finalBrakeForce;
+        private float finalSteerAngle;
 
         #endregion
 
@@ -47,16 +51,25 @@ namespace DM
                     wheelGO.position = worldPos;
                 }
 
-                if (input.Brake > 0.1f)
+                if (isBrakingWheel)
                 {
-                    finalBrakeForce = Mathf.Lerp(finalBrakeForce, input.Brake * brakePower, Time.deltaTime);
-                    WheelCol.brakeTorque = finalBrakeForce;
+                    if (input.Brake > 0.1f)
+                    {
+                        finalBrakeForce = Mathf.Lerp(finalBrakeForce, input.Brake * brakePower, Time.deltaTime);
+                        WheelCol.brakeTorque = finalBrakeForce;
+                    }
+                    else
+                    {
+                        finalBrakeForce = 0;
+                        WheelCol.motorTorque = 0.000000000001f;
+                        WheelCol.brakeTorque = 0;
+                    }
                 }
-                else
+
+                if (isSteering)
                 {
-                    finalBrakeForce = 0;
-                    WheelCol.motorTorque = 0.000000000001f;
-                    WheelCol.brakeTorque = 0;
+                    finalSteerAngle = Mathf.Lerp(finalSteerAngle, -input.Yaw * steerAngle, Time.deltaTime * steerSmoothSpeed);
+                    WheelCol.steerAngle = finalSteerAngle;
                 }
             }
         }
