@@ -10,7 +10,8 @@ namespace DM
         [MenuItem("Airplane Tools/Create New Airplane")]
         public static void CreateNewAirplane()
         {
-            DM_Airplane_SetupTools.BuildDefaultAirplane("New Airplane");
+            DM_Airplane_SetupWindow.LaunchSetupWindow();
+            //DM_Airplane_SetupTools.BuildDefaultAirplane("New Airplane");
         }
     }
 }
