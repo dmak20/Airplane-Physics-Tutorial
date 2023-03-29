@@ -9,6 +9,7 @@ namespace DM
     {
         #region Variables
         [Header("Propeller Properties")]
+        public float minRotationRPM = 30f;
         public float minBlurRPMs = 300;
         public float minTextureSwap = 600f;
         public GameObject mainProp;
@@ -32,6 +33,7 @@ namespace DM
         public void HandlePropeller(float currentRPM)
         {
             float dps = ((currentRPM * 360) / 60) * Time.deltaTime;
+            dps = Mathf.Clamp(dps, 0f, minRotationRPM);
             transform.Rotate(Vector3.forward, dps);
 
             if (mainProp && blurredProp)

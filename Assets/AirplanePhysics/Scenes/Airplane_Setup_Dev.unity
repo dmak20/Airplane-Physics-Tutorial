@@ -123,6 +123,109 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &8256030 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2365078197881336303, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+  m_PrefabInstance: {fileID: 9016024867965573807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &360832542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360832546}
+  - component: {fileID: 360832545}
+  - component: {fileID: 360832544}
+  - component: {fileID: 360832543}
+  m_Layer: 0
+  m_Name: Runway
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &360832543
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360832542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &360832544
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360832542}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6b29568dfa89fe142b18cea1cb1a279d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &360832545
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360832542}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &360832546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360832542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: -746}
+  m_LocalScale: {x: 5, y: 1, z: 150}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405834161
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +754,10 @@ PrefabInstance:
       propertyPath: isBrakingWheel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2365078197881336303, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: field of view
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3032535520848498308, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: axis.x
       value: 0
@@ -667,6 +774,10 @@ PrefabInstance:
       propertyPath: controlSurfaceGO
       value: 
       objectReference: {fileID: 582422475}
+    - target: {fileID: 3532218415500507879, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3965574556677556733, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: isBrakingWheel
       value: 1
@@ -685,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608896616780208164, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -448.6
+      value: -1483.6
       objectReference: {fileID: 0}
     - target: {fileID: 4608896616780208164, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -715,13 +826,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5257080343419137070, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: maxPitchValue
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: yawSpeed
-      value: 10000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: rollSpeed
-      value: 10000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: dragFactor
@@ -729,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: pitchSpeed
-      value: 10000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 6143217545778103582, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: rbLerpSpeed
@@ -821,12 +936,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7967077419686897775, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: maxForce
-      value: 15000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 8437627006301181229, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
       propertyPath: liftForce
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8813550666520388861, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: cameras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813550666520388861, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 903355909}
+    - target: {fileID: 8813550666520388861, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
+      propertyPath: cameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 8256030}
     m_RemovedComponents:
     - {fileID: 1646058834961026365, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8e781dde035eb8942916778df9a29fc7, type: 3}

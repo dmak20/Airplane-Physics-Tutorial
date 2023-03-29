@@ -12,6 +12,9 @@ namespace DM
         protected float yaw = 0f;
         protected float throttle = 0f;
 
+        [SerializeField]
+        private KeyCode cameraKey = KeyCode.C;
+        protected bool cameraSwitch = false;
         public KeyCode brakeKey = KeyCode.Space;
         protected float brake = 0f;
 
@@ -32,6 +35,7 @@ namespace DM
         public float Throttle { get { return throttle; }  }
         public int Flaps { get { return flaps; }  }
         public float Brake { get { return brake; }  }
+        public bool CameraSwitch { get { return cameraSwitch; } }
         #endregion
 
 
@@ -69,6 +73,8 @@ namespace DM
             }
 
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
+
+            cameraSwitch = Input.GetKeyDown(cameraKey);
         }
 
         void StickyThrottleControl()
