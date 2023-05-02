@@ -9,7 +9,7 @@ namespace DM
     [RequireComponent(typeof(DM_Airplane_Characteristics))]
     public class DM_Airplane_Controller : DM_BaseRigidbody_Controller
     {
-        #region
+        #region Variables
         [Header("Base Airplane Properties")]
         public DM_BaseAirplane_Input input;
         public DM_Airplane_Characteristics characteristics;
@@ -28,8 +28,17 @@ namespace DM
         public List<DM_Airplane_ControlSurface> controlSurfaces = new List<DM_Airplane_ControlSurface> ();
         #endregion
 
+        #region Properties
+
+        private float currentMSL;
+        public float CurrentMSL { get { return currentMSL; } }
+        private float currentAGL;
+        public float CurrentAGL { get {  return currentAGL; } }
+        #endregion
+
         #region Constants
         const float poundsToKilos = 0.453592f;
+        const float metersToFeet = 3.28084f;
         #endregion
 
         #region Builtin Methods
@@ -127,7 +136,16 @@ namespace DM
 
         private void HandleAltitude()
         {
+            currentMSL = transform.position.y * metersToFeet;
 
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            {
+                if (hit.transform.tag == "ground")
+                {
+                    currentAGL = (transform.position.y - hit.point.y) * metersToFeet;
+                }
+            }
         }
 
         #endregion

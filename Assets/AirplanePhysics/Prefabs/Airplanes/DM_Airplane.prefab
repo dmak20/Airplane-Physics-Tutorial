@@ -1349,9 +1349,9 @@ MonoBehaviour:
   minTextureSwap: 600
   mainProp: {fileID: 420290611238500816}
   blurredProp: {fileID: 7225684813379686580}
-  blurredPropMat: {fileID: 0}
-  blurLevel1: {fileID: 0}
-  blurLevel2: {fileID: 0}
+  blurredPropMat: {fileID: 2100000, guid: 2f9d0d217afef324f9cb0651dd3fa6d0, type: 2}
+  blurLevel1: {fileID: 2800000, guid: 7dc711c881b142143bb51b08434bfbac, type: 3}
+  blurLevel2: {fileID: 2800000, guid: 91ab18a8457c0494f83355431a4d8f8f, type: 3}
 --- !u!1 &420290611238500820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,7 +2065,7 @@ MonoBehaviour:
   input: {fileID: 1048737988}
   idleSource: {fileID: 4346353954290661653}
   fullThrottleSource: {fileID: 6652331441681096441}
-  maxPitchValue: 1.2
+  maxPitchValue: 1.5
 --- !u!1 &2253600842508620809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1048737988}
-  cameras: []
+  startCameraIndex: 0
+  cameras:
+  - {fileID: 0}
+  - {fileID: 2365078197881336303}
 --- !u!1 &2293722555399803314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,9 +2193,9 @@ MonoBehaviour:
   wheelGO: {fileID: 420290611238331882}
   isBrakingWheel: 0
   brakePower: 5
-  isSteering: 0
-  steerAngle: 12
-  steerSmoothSpeed: 2
+  isSteering: 1
+  steerAngle: 20
+  steerSmoothSpeed: 5
 --- !u!1 &2311409070152665201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,11 +2323,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b07e47689bb7244a672bec24cd5266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   maxAngle: 30
-  axis: {x: 1, y: 0, z: 0}
-  controlSurfaceGO: {fileID: 0}
-  smoothSpeed: 2
+  axis: {x: -1, y: 0, z: 0}
+  controlSurfaceGO: {fileID: 420290611238331886}
+  smoothSpeed: 5
 --- !u!1 &2657083153793502113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,7 +2386,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -2655,7 +2658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelGO: {fileID: 420290611238331902}
-  isBrakingWheel: 0
+  isBrakingWheel: 1
   brakePower: 5
   isSteering: 0
   steerAngle: 12
@@ -2875,6 +2878,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6342926387751009908}
   - component: {fileID: 7967077419686897775}
+  - component: {fileID: 2502371656408445348}
+  - component: {fileID: 1169929537983121828}
+  - component: {fileID: 1129291567}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -2909,8 +2915,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b63aa193f8fc674f8726ec30022ebfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 1500
+  maxForce: 5000
   maxRPM: 2550
+  shutOffSpeed: 2
   powerCurve:
     serializedVersion: 2
     m_Curve:
@@ -2936,6 +2943,108 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   propeller: {fileID: 1602574522}
+--- !u!114 &2502371656408445348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646437902539671731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9467aa2d8339a94283797bdaf42cc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutoffKey: 111
+  turnOnKey: 112
+  onEngineCutoff:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7967077419686897775}
+        m_TargetAssemblyTypeName: DM.DM_Airplane_Engine, Assembly-CSharp
+        m_MethodName: set_ShutEngineOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5257080343419137070}
+        m_TargetAssemblyTypeName: DM.DM_Audio, Assembly-CSharp
+        m_MethodName: set_IsShutOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onEngineTurnOn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7967077419686897775}
+        m_TargetAssemblyTypeName: DM.DM_Airplane_Engine, Assembly-CSharp
+        m_MethodName: set_ShutEngineOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5257080343419137070}
+        m_TargetAssemblyTypeName: DM.DM_Audio, Assembly-CSharp
+        m_MethodName: set_IsShutOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1169929537983121828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646437902539671731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafdce198dfcd0248928cfa9d6269f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelCapacity: 26
+  fuelBurnRate: 6.1
+--- !u!114 &1129291567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646437902539671731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9467aa2d8339a94283797bdaf42cc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutoffKey: 111
+  turnOnKey: 112
+  onEngineCutoff:
+    m_PersistentCalls:
+      m_Calls: []
+  onEngineTurnOn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7052717668445712815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,9 +3409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 1048737988}
-  characteristics: {fileID: 0}
+  characteristics: {fileID: 6143217545778103582}
   centerOfGravity: {fileID: 8274435798827269459}
-  airplaneWeight: 800
+  airplaneWeight: 1200
   engines:
   - {fileID: 7967077419686897775}
   wheels:
@@ -3362,16 +3471,16 @@ MonoBehaviour:
   forwardSpeed: 0
   mph: 0
   maxMPH: 110
-  rbLerpSpeed: 0.01
-  maxLiftPower: 800
+  rbLerpSpeed: 0.03
+  maxLiftPower: 5000
   liftCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -3388,11 +3497,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dragFactor: 0.01
-  flapDragFactor: 0.005
-  pitchSpeed: 1000
-  rollSpeed: 1000
-  yawSpeed: 1000
+  dragFactor: 0.0004
+  flapDragFactor: 0.0002
+  pitchSpeed: 20000
+  rollSpeed: 20000
+  yawSpeed: 20000
 --- !u!82 &4438294092197704173
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3498,8 +3607,8 @@ Rigidbody:
   m_GameObject: {fileID: 7835425354447533281}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.1
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3581,7 +3690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelGO: {fileID: 420290611238331840}
-  isBrakingWheel: 0
+  isBrakingWheel: 1
   brakePower: 5
   isSteering: 0
   steerAngle: 12
@@ -3632,9 +3741,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   maxAngle: 30
-  axis: {x: 1, y: 0, z: 0}
-  controlSurfaceGO: {fileID: 0}
-  smoothSpeed: 2
+  axis: {x: 0, y: -1, z: 0}
+  controlSurfaceGO: {fileID: 420290611238331842}
+  smoothSpeed: 4
 --- !u!1 &9077890771453136306
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,12 @@ namespace DM
 
         private float finalVolume;
         private float finalPitchValue;
+
+        private bool isShutOff = false;
+        public bool IsShutOff
+        {
+            set { isShutOff = value; }
+        }
         #endregion
 
         // Start is called before the first frame update
@@ -36,8 +42,17 @@ namespace DM
         #region Cusom Methods
         protected virtual void HandleAudio()
         {
-            finalVolume = Mathf.Lerp(0f, 1f, input.StickyThrottle);
-            finalPitchValue = Mathf.Lerp(1f, maxPitchValue, input.StickyThrottle);
+            if (isShutOff)
+            {
+                finalVolume = Mathf.Lerp(finalVolume, 0, Time.deltaTime * 2f);
+                idleSource.volume = finalVolume;
+
+            } else
+            {
+                idleSource.volume = 0.25f;
+                finalVolume = Mathf.Lerp(0f, 1f, input.StickyThrottle);
+                finalPitchValue = Mathf.Lerp(1f, maxPitchValue, input.StickyThrottle);
+            }
 
             if (fullThrottleSource)
             {
@@ -45,6 +60,7 @@ namespace DM
                 fullThrottleSource.pitch = finalPitchValue;
             }
         }
+
         #endregion
     }
 
